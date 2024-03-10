@@ -1,0 +1,103 @@
+﻿@model CartDto
+@if(Model.CartDetails != null){
+<form method="post">
+    <br />
+    <input asp-for="CartHeader.UserId" hidden />
+    <input asp-for="CartHeader.CartHeaderId" hidden />
+    <div class="">
+        <div class="card border mt-4 container">
+            <div class="card-header bg-dark text-light ml-0 row">
+                <div class="col-6">
+                    <h3 class="text-success">Shopping Cart</h3>
+                </div>
+                <div class="col-6 text-end">
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-outline-warning mt-2 btn-sm">Countinue Shopping</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="d-none d-lg-block">
+                <div class="row text-info">
+                    <div class="col-lg-2">
+
+                    </div>
+                    <div class="col-lg-5">
+                        Product Details
+                    </div>
+                    <div class="col-lg-2">
+                        Price
+                    </div>
+                    <div class="col-lg-2">
+                        Count
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                </div>
+            </div>
+            <hr />
+
+            @foreach(var cardObj in Model.CartDetails)
+            {
+                <div class="row h-100">
+                    <div class="col-4 col-md-2 text-center py-2">
+                        <div style="min-width:100%; height:150px; border-radius:8px; background-color:grey">
+                            <img src="@cardObj.Product.ImageUrl" width="100%" class="rounded" />
+                        </div>
+                    </div>
+                    <div class="col-8 col-md-5">
+                        <h5>@cardObj.Product.Name</h5>
+                        <div style="font-size:11px;">@Html.Raw(cardObj.Product.Description)</div>
+                    </div>
+                    <div class="col-3 col-md-2 pt-md-4" style="font-size:11px;">
+                        <span style="font-size:17px;">@string.Format("{0:c}",@cardObj.Product.Price)</span>
+                    </div>
+                    <div class="col-3 col-md-2 pt-md-4" style="font-size:11px;">
+                        <span style="font-size:17px;">@cardObj.Count</span>
+                    </div>
+                    <div class="col-2 col-md-1 p-0 pt-lg-4" style="font-size:11px;">
+                        <a asp-action="Remove" asp-route-cartDetailsId="@cardObj.CartDetailsId" class="btn btn-sm btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            }
+            
+            <hr />
+            <div class="row">
+                <div class="col-6">
+                    <span>Coupon</span>
+                    <input asp-for="CartHeader.CouponCode" />
+                    @if (Model.CartHeader.CouponCode != null)
+                    {
+                        <button type="submit" asp-action="ApplyCoupon" class="btn btn-sm btn-success">Remove</button>
+                    }
+                    else
+                    {
+                        <button type="submit" asp-action="ApplyCoupon" class="btn btn-sm btn-success">Apply</button>
+                    }
+                    
+                </div>
+                <div class="col-6 d-flex flex-column text-end">
+                    <span class="text-danger" style="font-size:21px;">Order Total: @string.Format("{0:c}",Model.CartHeader.CartTotal)</span>
+                    <span class="text-success">Order Discount: @string.Format("{0:c}",Model.CartHeader.DiscountAmount)</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-outline-danger form-control">Email Cart</button>
+            </div>
+            <div class="col-6 col-md-3 offset-md-6">
+                <button disabled type="submit" class="btn btn-success form-control">Checkout (Coming Soon!)</button>
+            </div>
+        </div>
+    </div>
+</form>
+} else {
+    <div class="container pt-5">
+        <p>Add Item to cart</p>
+    </div>
+}

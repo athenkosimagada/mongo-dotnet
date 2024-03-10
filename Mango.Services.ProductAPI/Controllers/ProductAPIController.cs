@@ -2,7 +2,9 @@
 using Mango.Services.ProductAPI.Data;
 using Mango.Services.ProductAPI.Models;
 using Mango.Services.ProductAPI.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Mango.Services.ProductAPI.Controllers
 {
@@ -40,6 +42,7 @@ namespace Mango.Services.ProductAPI.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
+        [Authorize]
         public ResponseDto Get(int id)
         {
             try
@@ -57,6 +60,7 @@ namespace Mango.Services.ProductAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public ResponseDto Post([FromBody] ProductDto productDto)
         {
             try
@@ -77,6 +81,7 @@ namespace Mango.Services.ProductAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "ADMIN")]
         public ResponseDto Put([FromBody] ProductDto productDto)
         {
             try
@@ -87,6 +92,7 @@ namespace Mango.Services.ProductAPI.Controllers
                 obj.Description = productDto.Description;
                 obj.Price = productDto.Price;
                 obj.CategoryName = productDto.CategoryName;
+                obj.ImageUrl = productDto.ImageUrl;
 
                 _db.Products.Update(obj);
                 _db.SaveChanges();
@@ -104,6 +110,7 @@ namespace Mango.Services.ProductAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize(Roles = "ADMIN")]
         public ResponseDto Delete(int id)
         {
             try

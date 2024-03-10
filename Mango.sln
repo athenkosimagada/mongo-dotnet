@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mango.Services.AuthAPI", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mango.Services.ProductAPI", "Mango.Services.ProductAPI\Mango.Services.ProductAPI.csproj", "{AC994493-8876-4517-8FDA-74D3749B0ABA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mango.Website", "Mango.Website\Mango.Website.csproj", "{E7888F79-EB5D-4CF3-A314-98A9AA3ECEC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mango.Website", "Mango.Website\Mango.Website.csproj", "{E7888F79-EB5D-4CF3-A314-98A9AA3ECEC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mango.Services.ShoppingCartAPI", "Mango.Services.ShoppingCartAPI\Mango.Services.ShoppingCartAPI.csproj", "{3487AEBB-6E72-43AC-9195-F722F009739B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{E7888F79-EB5D-4CF3-A314-98A9AA3ECEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7888F79-EB5D-4CF3-A314-98A9AA3ECEC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7888F79-EB5D-4CF3-A314-98A9AA3ECEC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3487AEBB-6E72-43AC-9195-F722F009739B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3487AEBB-6E72-43AC-9195-F722F009739B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3487AEBB-6E72-43AC-9195-F722F009739B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3487AEBB-6E72-43AC-9195-F722F009739B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{EB3FD727-9E0D-49FA-94A2-92540005A810} = {27855584-E760-4A3A-B159-2F8FE3CC98D0}
 		{AC994493-8876-4517-8FDA-74D3749B0ABA} = {27855584-E760-4A3A-B159-2F8FE3CC98D0}
 		{E7888F79-EB5D-4CF3-A314-98A9AA3ECEC1} = {8128002B-BB8D-45C5-9B9F-5969AD554DFA}
+		{3487AEBB-6E72-43AC-9195-F722F009739B} = {27855584-E760-4A3A-B159-2F8FE3CC98D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AAF0C9CF-C1D7-4361-87A3-3C30B6E9A316}
